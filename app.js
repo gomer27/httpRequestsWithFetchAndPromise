@@ -39,6 +39,17 @@ class Request {
         .catch((err) => reject(err));
     });
   }
+
+  // Delete Request
+  delete(url) {
+    return new Promise((resolve, reject) => {
+      fetch("https://jsonplaceholder.typicode.com/albums/1", {
+        method: "DELETE",
+      })
+        .then((response) => resolve("Veri başarıyla silindi"))
+        .catch((err) => reject(err));
+    });
+  }
 }
 
 const request = new Request();
@@ -64,10 +75,16 @@ const request = new Request();
 //   .catch((err) => console.log(err));
 
 // Put Request
+// request
+//   .put("https://jsonplaceholder.typicode.com/albums/20", {
+//     userId: 1,
+//     title: "Naber",
+//   })
+//   .then((album) => console.log(album))
+//   .catch((err) => console.log(err));
+
+// Delete Request
 request
-  .put("https://jsonplaceholder.typicode.com/albums/20", {
-    userId: 1,
-    title: "Naber",
-  })
-  .then((album) => console.log(album))
+  .delete("https://jsonplaceholder.typicode.com/albums/20")
+  .then((message) => console.log(message))
   .catch((err) => console.log(err));
